@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Tablero Battle Ship</title>
+	<link rel="stylesheet" href="bootstrap.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script>
+		var tablero=false;
+		var J2=0,J1=0;
+		function carga(){
+			if (J1==11) {
+				document.getElementById("cam").innerHTML="Jugador1 Gano!!!";
+				document.getElementById("cam").style.background="DarkGreen  ";
+				document.getElementById("cam").style.color="Cornsilk ";
+			}
+			if (J2==11) {
+				document.getElementById("cam").innerHTML="Jugador2 Gano!!!";
+				document.getElementById("cam").style.background="DarkGreen  ";
+				document.getElementById("cam").style.color="Cornsilk ";
+			}
+
+			if(tablero==false){
+				document.getElementById("boton").style.display="";
+				document.getElementById("tablero1").style.display="";
+				document.getElementById("coordenadas").style.display="";
+				document.getElementById("boton2").style.display="none";
+				document.getElementById("tablero2").style.display="none";
+				document.getElementById("coordenadas2").style.display="none";
+				tablero=true;
+			} else {
+				document.getElementById("coordenadas2").style.display="";
+				document.getElementById("tablero2").style.display="";
+				document.getElementById("boton2").style.display="";
+				document.getElementById("coordenadas").style.display="none";
+				document.getElementById("tablero1").style.display="none";
+				document.getElementById("boton").style.display="none";
+				tablero=false;
+			}
+		}
+		
+		var v1=['A','0','B','B','0',
+				'A','0','0','0','0',
+				'A','0','0','0','0',
+				'A','B','B','0','0',
+				'0','0','C','C','C'];
+
+		function Barcos(){
+			var casilla1=document.getElementById("coordenadas").value;
+			var cosa1=document.getElementById(""+casilla1);
+			
+				if (v1[casilla1]!='0') {
+					if (cosa1.style.background=="darkRed" || cosa1.style.background=="lightSkyBlue") {
+						alert("Casilla ya tecleada");
+					}else{
+						cosa1.style.background="darkRed";
+						alert("Cambia Tablero");
+						J1++;	
+					}
+				}
+					if (v1[casilla1]=='0'){
+						cosa1.style.background="lightSkyBlue";
+						alert("Cambia Tablero");
+					}
+	}
+
+		var v2=['0','0','0','0','0',
+				'0','A','A','A','A',
+				'C','0','0','0','0',
+				'C','0','B','0','B',
+				'C','0','B','0','B'];
+
+		function Barcos2(){
+			var casilla2=document.getElementById("coordenadas2").value;
+			var cosa2=document.getElementById("A"+casilla2);
+			
+				if (v2[casilla2]!='0') {
+					if (cosa2.style.background=="darkRed" || cosa2.style.background=="lightSkyBlue") {
+						alert("Casilla ya tecleada");
+					}else{
+						cosa2.style.background="darkRed";
+						alert("Cambia Tablero");
+						J2++;	
+					}
+		        }
+		        if (v2[casilla2]=='0'){
+					cosa2.style.background="lightSkyBlue";
+					alert("Cambia Tablero");
+				}
+	}
+	</script>
+	<style>
+		td {
+			width: 70px;
+			height: 70px;
+			font-size: 20px;
+			background-color: #eaeaea;
+		}
+	</style>
+</head>
+<body onload="carga()" background="agua.jpg">
+	<div class="container">
+		<div class="row text-center">
+			<h1 id="cam" style="font-size:60px;">Juego BattleShip</h1><hr>
+		</div>
+		<div class="text-center">
+			<button class="btn btn-primary" onclick="carga()" style="background-color:Teal" >Cambiar turno</button>
+		</div><br>
+		<div class="row">
+			<!-- Jugador1 -->
+			<div class="col-xs-12" id="tablero1"><center>
+				<h3 style="background-color: Gold">Tablero 1</h3><hr>
+				<table border="1">
+					<tr>
+						<td id="0">0</td>
+						<td id="1">1</td>
+						<td id="2">2</td>
+						<td id="3">3</td>
+						<td id="4">4</td>
+					</tr>
+					<tr>
+						<td id="5">5</td>
+						<td id="6">6</td>
+						<td id="7">7</td>
+						<td id="8">8</td>
+						<td id="9">9</td>
+					</tr>
+					<tr>
+						<td id="10">10</td>
+						<td id="11">11</td>
+						<td id="12">12</td>
+						<td id="13">13</td>
+						<td id="14">14</td>
+					</tr>
+					<tr>
+						<td id="15">15</td>
+						<td id="16">16</td>
+						<td id="17">17</td>
+						<td id="18">18</td>
+						<td id="19">19</td>
+					</tr>
+					<tr>
+						<td id="20">20</td>
+						<td id="21">21</td>
+						<td id="22">22</td>
+						<td id="23">23</td>
+						<td id="24">24</td>
+					</tr>
+				</center></table>
+			</div>
+		</div>
+		<div class="row">
+			<!-- Jugador2 -->
+			<div class="col-xs-12" id="tablero2">
+				<h3 style="background-color: Gold">Tablero 2</h3><hr>
+				<table border="1"><center>
+					<tr>
+						<td id="A0">0</td>
+						<td id="A1">1</td>
+						<td id="A2">2</td>
+						<td id="A3">3</td>
+						<td id="A4">4</td>
+					</tr>
+					<tr>
+						<td id="A5">5</td>
+						<td id="A6">6</td>
+						<td id="A7">7</td>
+						<td id="A8">8</td>
+						<td id="A9">9</td>
+					</tr>
+					<tr>
+						<td id="A10">10</td>
+						<td id="A11">11</td>
+						<td id="A12">12</td>
+						<td id="A13">13</td>
+						<td id="A14">14</td>
+					</tr>
+					<tr>
+						<td id="A15">15</td>
+						<td id="A16">16</td>
+						<td id="A17">17</td>
+						<td id="A18">18</td>
+						<td id="A19">19</td>
+					</tr>
+					<tr>
+						<td id="A20">20</td>
+						<td id="A21">21</td>
+						<td id="A22">22</td>
+						<td id="A23">23</td>
+						<td id="A24">24</td>
+					</tr>
+				</center></table>
+			</div>
+		</div>
+	</div>
+	<br>
+	<input type="text" id="coordenadas">
+	<input type="text" id="coordenadas2">
+	<button onclick="Barcos()" id="boton" style="background-color:Teal   ">Ataque</button>
+	<button onclick="Barcos2()" id="boton2" style="background-color:Teal   ">Ataque</button>
+</body>
+</html>
